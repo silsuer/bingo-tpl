@@ -30,7 +30,7 @@ func (eSet *ExtensionSet) AddExtension(ext ExtensionInterface) {
 
 	if eSet.initialized { // 已经初始化过，退出程序
 		panic("Unable to register extension " + ext.GetName() + " as extensions have already been initialized.")
-	}else{
+	} else {
 		eSet.Init()
 	}
 
@@ -111,6 +111,7 @@ type ExtensionInterface interface {
 	GetFunctions() map[string]TplFunc            // 获取所有注册过的方法
 	GetTokenParsers() map[string]ParserInterface // 获取所有注册过的标记
 	GetOperators() map[string]OperatorInterface  // 获取所有操作符
+	IsInitialized() bool                         // 是否已经初始化过
 }
 
 type Extension struct {
@@ -157,4 +158,8 @@ func (ex *Extension) GetOperators() map[string]OperatorInterface {
 	}
 
 	return ex.operators
+}
+
+func (ex *Extension) IsInitialized() bool {
+	return ex.initialized
 }

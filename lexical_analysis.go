@@ -138,6 +138,14 @@ func (n *LexicalNode) Tokenize(lexer *Lexer) {
 		//fmt.Println(string(n.Content))
 		for _, v := range n.Content {
 
+			// 如果是空格...
+			if v == 32 {
+               lexer.lexSpace()
+			}
+			// 如果是运算符... 操作符包括一元运算符和二元运算符
+
+
+			// 如果是空格
 			switch v {
 			case 32:
 				lexer.lexSpace()
@@ -148,8 +156,8 @@ func (n *LexicalNode) Tokenize(lexer *Lexer) {
 			}
 
 		}
-		n.tokens = lexer.tokens[:]  // 赋值给节点的token流
-		lexer.tokens = []*Token{} // 清空token
+		n.tokens = lexer.tokens[:] // 赋值给节点的token流
+		lexer.tokens = []*Token{}  // 清空token
 		//for _, vv := range n.tokens {
 		//	fmt.Println(vv.T)
 		//	fmt.Println(string(vv.Value))

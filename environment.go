@@ -57,8 +57,7 @@ func (l *Loader) GetPath() string {
 //	ProcedenceMedium = 2 // 中
 //	ProcedenceLow    = 1 // 低
 //
-//	AssociativityLeft  = 1 // 左结合
-//	AssociativityRight = 2 // 右结合
+
 //)
 //
 //// 向环境中添加操作符
@@ -304,27 +303,17 @@ const version = "1.0"
 
 type Environment struct {
 	//charset             string                 // 编码
-	loader LoaderInterface // 加载器
-	debug  bool            // 是否是调试模式
-	//autoReload          bool                   // 自动重载
-	//cache               string                 // 缓存
-	lexer    *Lexer            // 词法分析器
-	parser   ParserInterface   // 语法解析器
-	compiler CompilerInterface // 编译器（最后进行变量映射）
-	//globals             map[string]interface{} // 全局变量
-	//resolvedGlobals     []string               // 已经解析好了的全局变量
+	loader          LoaderInterface      // 加载器
+	debug           bool                 // 是否是调试模式
+	lexer           *Lexer               // 词法分析器
+	parser          ParserInterface      // 语法解析器
+	compiler        CompilerInterface    // 编译器（最后进行变量映射）
 	templateExt     string               // 模版文件名后缀
 	loadedTemplates map[string]*Template // 已经加载好了的模版
-	//strictVariables     map[string]interface{} // 严格变量
-	//templateClassPrefix string                 // 模版类前缀
-	extensionSet   *ExtensionSet // 扩展集合
-	LDelimiter     string        // 左定界符
-	RDelimiter     string        // 右定界符
-	BufferFileSize int           // 每次读取的文件流大小
-	//runtimeLoaders      map[string]interface{} // 运行时加载器
-	//runtimes            map[string]interface{} // 运行时数组
-	//optionsHash         map[string]interface{} // 选项哈希
-	//loading             map[string]interface{} // 正在加载中的数据
+	extensionSet    *ExtensionSet        // 扩展集合
+	LDelimiter      string               // 左定界符
+	RDelimiter      string               // 右定界符
+	BufferFileSize  int                  // 每次读取的文件流大小
 }
 
 // 初始化结构体  相当于构造函数
@@ -373,8 +362,12 @@ func (e *Environment) Init(loader LoaderInterface, options map[string]string) {
 func (e *Environment) AddExtension(ext ExtensionInterface) {
 	e.extensionSet.AddExtension(ext)
 
+	// 将扩展中的数据挂载到环境中
+
+
 	// 此处更新了optionsHash值
 }
+
 
 func (e *Environment) setLoader(loader LoaderInterface) {
 	e.loader = loader

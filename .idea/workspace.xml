@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bce01456-13e6-4213-b379-c7bbe02046c9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/environment.go" beforeDir="false" afterPath="$PROJECT_DIR$/environment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/examples/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/tpl/hello.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/tpl/hello.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extension.go" beforeDir="false" afterPath="$PROJECT_DIR$/extension.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/core.go" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/core.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lexical_analysis.go" beforeDir="false" afterPath="$PROJECT_DIR$/lexical_analysis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/token_parse.go" beforeDir="false" afterPath="$PROJECT_DIR$/token_parse.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operator.go" beforeDir="false" afterPath="$PROJECT_DIR$/operator.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="parser.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+            <state relative-caret-position="90">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -68,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lexical_analysis.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="lexical_analysis.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lexical_analysis.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="144" column="36" lean-forward="true" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
+            <state relative-caret-position="346">
+              <caret line="149" column="20" lean-forward="true" selection-start-line="149" selection-start-column="20" selection-end-line="149" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -80,8 +79,8 @@
       <file leaf-file-name="environment.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/environment.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="226">
+              <caret line="385" column="16" lean-forward="true" selection-start-line="385" selection-start-column="16" selection-end-line="385" selection-end-column="16" />
               <folding>
                 <element signature="e#19#41#0" expanded="true" />
               </folding>
@@ -92,8 +91,11 @@
       <file leaf-file-name="core.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/extensions/core.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+            <state relative-caret-position="120">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+              <folding>
+                <element signature="e#20#73#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,17 +103,17 @@
       <file leaf-file-name="operator.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/operator.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+            <state relative-caret-position="267">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="extension.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="extension.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/extension.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="32">
+              <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -119,8 +121,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="13" column="39" lean-forward="true" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+            <state relative-caret-position="237">
+              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
               <folding>
                 <element signature="e#14#63#0" expanded="true" />
               </folding>
@@ -158,7 +160,10 @@
       <find>nav</find>
       <find>fmt</find>
       <find>Extension</find>
+      <find>一元</find>
+      <find>左结合</find>
       <find>init</find>
+      <find>Addextension</find>
     </findStrings>
     <replaceStrings>
       <replace>Ext_Core</replace>
@@ -180,17 +185,17 @@
         <option value="$PROJECT_DIR$/function.go" />
         <option value="$PROJECT_DIR$/../../../silsuer.github.io/_posts/2018-07-31-dawn-start.md" />
         <option value="$PROJECT_DIR$/tags.go" />
-        <option value="$PROJECT_DIR$/operator.go" />
         <option value="$PROJECT_DIR$/../../../silsuer.github.io/_posts/2018-09-11-twig-source.md" />
         <option value="$PROJECT_DIR$/parser.go" />
         <option value="$PROJECT_DIR$/template.go" />
         <option value="$PROJECT_DIR$/examples/tpl/hello.html" />
         <option value="$PROJECT_DIR$/token_parse.go" />
-        <option value="$PROJECT_DIR$/lexical_analysis.go" />
-        <option value="$PROJECT_DIR$/environment.go" />
         <option value="$PROJECT_DIR$/examples/main.go" />
-        <option value="$PROJECT_DIR$/extensions/core.go" />
         <option value="$PROJECT_DIR$/extension.go" />
+        <option value="$PROJECT_DIR$/operator.go" />
+        <option value="$PROJECT_DIR$/extensions/core.go" />
+        <option value="$PROJECT_DIR$/environment.go" />
+        <option value="$PROJECT_DIR$/lexical_analysis.go" />
       </list>
     </option>
   </component>
@@ -634,40 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/environment.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#19#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="13" column="39" lean-forward="true" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-          <folding>
-            <element signature="e#14#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/operator.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/extensions/core.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/token_parse.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="583">
@@ -677,22 +648,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lexical_analysis.go">
+    <entry file="file://$PROJECT_DIR$/operator.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="144" column="36" lean-forward="true" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
+        <state relative-caret-position="267">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/extension.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        <state relative-caret-position="32">
+          <caret line="26" column="34" lean-forward="true" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extensions/core.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding>
+            <element signature="e#20#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+          <folding>
+            <element signature="e#14#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/environment.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="385" column="16" lean-forward="true" selection-start-line="385" selection-start-column="16" selection-end-line="385" selection-end-column="16" />
+          <folding>
+            <element signature="e#19#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lexical_analysis.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="149" column="20" lean-forward="true" selection-start-line="149" selection-start-column="20" selection-end-line="149" selection-end-column="20" />
         </state>
       </provider>
     </entry>
