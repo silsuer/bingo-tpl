@@ -18,9 +18,13 @@ type ExtensionSet struct {
 	lastModified       int                           // 上次修改
 }
 
+// 初始化数据
 func (eSet *ExtensionSet) Init() {
 	eSet.initialized = true
 	eSet.extensions = make(map[string]ExtensionInterface)
+	eSet.parsers = make(map[string]ParserInterface)
+	eSet.functions = make(map[string]TplFunc)
+	eSet.globals = make(map[string]interface{})
 }
 
 // 向扩展集中添加扩展
@@ -90,15 +94,17 @@ func (eSet *ExtensionSet) initExtension(ext ExtensionInterface) {
 
 	// 添加节点访问器
 
-	// 添加操作符
-	for _, o := range ext.GetOperators() {
-		// 一元操作符和二元操作符
-		if o.GetOperatorType() == OperatorUnaryType {
-			eSet.unaryOperators = append(eSet.unaryOperators, o)
-		}
-
+	// 添加二元操作符
+	for _, o := range ext.GetBinaryOperators() {
 		if o.GetOperatorType() == OperatorBinaryType {
 			eSet.binaryOperators = append(eSet.binaryOperators, o)
+		}
+	}
+
+	// 添加一元操作符
+	for _, o := range ext.GetUnaryOperators() {
+		if o.GetOperatorType() == OperatorUnaryType {
+			eSet.unaryOperators = append(eSet.unaryOperators, o)
 		}
 	}
 
@@ -108,25 +114,28 @@ func (eSet *ExtensionSet) initExtension(ext ExtensionInterface) {
 type ExtensionInterface interface {
 	GetName() string // 获取扩展名
 	Init()
-	GetFunctions() map[string]TplFunc            // 获取所有注册过的方法
-	GetTokenParsers() map[string]ParserInterface // 获取所有注册过的标记
-	GetOperators() map[string]OperatorInterface  // 获取所有操作符
-	IsInitialized() bool                         // 是否已经初始化过
+	GetFunctions() map[string]TplFunc                 // 获取所有注册过的方法
+	GetTokenParsers() map[string]ParserInterface      // 获取所有注册过的标记
+	GetBinaryOperators() map[string]OperatorInterface // 获取所有二元操作符
+	GetUnaryOperators() map[string]OperatorInterface  // 获取所有一元运算符
+	IsInitialized() bool                              // 是否已经初始化过
 }
 
 type Extension struct {
-	name         string // 名称
-	initialized  bool   // 是否执行过init方法
-	functions    map[string]TplFunc
-	tokenParsers map[string]ParserInterface
-	operators    map[string]OperatorInterface
+	name            string // 名称
+	initialized     bool   // 是否执行过init方法
+	functions       map[string]TplFunc
+	tokenParsers    map[string]ParserInterface
+	binaryOperators map[string]OperatorInterface
+	unaryOperators  map[string]OperatorInterface
 }
 
 func (ex *Extension) Init() {
 	if ex.initialized == false {
 		ex.functions = make(map[string]TplFunc)
 		ex.tokenParsers = make(map[string]ParserInterface)
-		ex.operators = make(map[string]OperatorInterface)
+		ex.binaryOperators = make(map[string]OperatorInterface)
+		ex.unaryOperators = make(map[string]OperatorInterface)
 	}
 	ex.initialized = true
 }
@@ -152,12 +161,19 @@ func (ex *Extension) GetTokenParsers() map[string]ParserInterface {
 	return ex.tokenParsers
 }
 
-func (ex *Extension) GetOperators() map[string]OperatorInterface {
+func (ex *Extension) GetBinaryOperators() map[string]OperatorInterface {
 	if ex.initialized == false {
 		ex.Init()
 	}
 
-	return ex.operators
+	return ex.binaryOperators
+}
+
+func (ex *Extension) GetUnaryOperators() map[string]OperatorInterface {
+	if ex.initialized == false {
+		ex.Init()
+	}
+	return ex.unaryOperators
 }
 
 func (ex *Extension) IsInitialized() bool {

@@ -139,18 +139,24 @@ func (n *LexicalNode) Tokenize(lexer *Lexer) {
 		for _, v := range n.Content {
 
 			// 如果是空格...
-			if v == 32 {
-               lexer.lexSpace()
-			}
+			//if v == 32 {
+			//  lexer.lexSpace()
+			//}
 			// 如果是运算符... 操作符包括一元运算符和二元运算符
 
+			// 空格 . ' " 操作符 5种
 
 			// 如果是空格
 			switch v {
 			case 32:
 				lexer.lexSpace()
-			case 43, 45, 42, 47, 94: // + - * / ^
-				lexer.lexOperator(v)
+			case 46: // .
+				lexer.lexPunctuation(v)
+			case 39, 34: // ' "
+				lexer.lexQuotation(v)
+				//case 43, 45, 42, 47, 94: // + - * / ^
+				//	lexer.lexOperator(v)
+
 			default:
 				lexer.tmpSlice = append(lexer.tmpSlice, v)
 			}
@@ -159,7 +165,7 @@ func (n *LexicalNode) Tokenize(lexer *Lexer) {
 		n.tokens = lexer.tokens[:] // 赋值给节点的token流
 		lexer.tokens = []*Token{}  // 清空token
 		//for _, vv := range n.tokens {
-		//	fmt.Println(vv.T)
+		//	//fmt.Println(vv.T)
 		//	fmt.Println(string(vv.Value))
 		//}
 
@@ -186,6 +192,51 @@ func (le *Lexer) lexSpace() {
 		//le.tmpSlice = le.tmpSlice[:0] // 不能使用这个方法清空，此时清空了，但是指针还在，再度添加数据之后，会影响之前的数据
 		le.tmpSlice = []byte{}
 		le.pushToken(t)
+	}
+}
+
+// 解析标点 .
+func (le *Lexer) lexPunctuation(b byte) {
+	if le.lookStackTop() == 0 {
+		le.lexSpace() // 将当前的临时切片组成token
+		t := new(Token)
+		t.T = TypePunctuation
+		t.Value = append(t.Value, b)
+		le.pushToken(t) // 挂载到token上
+	} else {
+		le.tmpSlice = append(le.tmpSlice, b)
+	}
+}
+
+// 解析引号
+func (le *Lexer) lexQuotation(b byte) {
+	// 左引号
+
+	if le.lookStackTop() == 0 && !le.preIsBackslash() {
+		le.pushStack(int(b))
+	} else if le.lookStackTop() == int(b) && le.preIsBackslash() {
+		// 转码后的 '  ,去掉 \ 并加入引号
+		le.tmpSlice = append(le.tmpSlice[:len(le.tmpSlice)-1], b)
+	} else if le.lookStackTop() == int(b) && !le.preIsBackslash() {
+		t := new(Token)
+		t.T = TypeString // 字符串类型
+		t.Value = le.tmpSlice[:]
+		le.tmpSlice = []byte{}
+		le.pushToken(t)
+		le.popStack()
+	}
+}
+
+// 当前上一个字符是否是反斜杠
+func (le *Lexer) preIsBackslash() bool {
+	if len(le.tmpSlice) > 0 {
+		if le.tmpSlice[len(le.tmpSlice)-1] != 92 {
+			return false
+		} else {
+			return true
+		}
+	} else {
+		return false
 	}
 }
 
@@ -248,7 +299,7 @@ func (le *Lexer) pushStack(i int) {
 func (le *Lexer) popStack() int {
 	if len(le.stack) > 0 {
 		res := le.stack[len(le.stack)-1]
-		le.stack = le.stack[0 : len(le.stack)-2]
+		le.stack = le.stack[0 : len(le.stack)-1]
 		return res
 	} else {
 		return 0

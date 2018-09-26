@@ -3,6 +3,7 @@ package bingo_tpl
 import (
 	"os"
 	"io"
+	"fmt"
 )
 
 //
@@ -364,10 +365,8 @@ func (e *Environment) AddExtension(ext ExtensionInterface) {
 
 	// 将扩展中的数据挂载到环境中
 
-
 	// 此处更新了optionsHash值
 }
-
 
 func (e *Environment) setLoader(loader LoaderInterface) {
 	e.loader = loader
@@ -382,7 +381,9 @@ func (e *Environment) tokenize(chain *LexicalChain) *TokenStream {
 
 		// 单纯词法分析，将文本解析成token流，不涉及到语法分析，所以无需传入扩展集合
 	}
+
 	chain.Iterator(func(node *LexicalNode) {
+		//node.Print()
 		node.Tokenize(e.lexer)
 	})
 
@@ -413,10 +414,12 @@ func (e *Environment) LoadTemplate(tmp string) *Template {
 	// 将词法链解析成token流
 	e.tokenize(chain)
 
-	//for _, v := range e.lexer.tokens {
-	//	fmt.Println(string(v.Value))
-	//	//fmt.Println(v.T)
-	//}
+	for _, v := range chain.Nodes {
+		for _, vv := range v.tokens {
+			//fmt.Println("===========" + strconv.Itoa(vv.T))
+			fmt.Println(string(vv.Value))
+		}
+	}
 
 	return e.loadedTemplates[path]
 }

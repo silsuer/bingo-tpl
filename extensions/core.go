@@ -15,7 +15,8 @@ func (ex *Ext_Core) GetName() string {
 	return "core"
 }
 
-func (ex *Ext_Core) GetOperators() map[string]bingo_tpl.OperatorInterface {
+// 获取二元运算符
+func (ex *Ext_Core) GetBinaryOperators() map[string]bingo_tpl.OperatorInterface {
 	if !ex.IsInitialized() { // 如果没初始化过，先初始化
 		ex.Init()
 	}
@@ -58,6 +59,15 @@ func (ex *Ext_Core) GetOperators() map[string]bingo_tpl.OperatorInterface {
 			panic("the - operator needs 2 tokens of TypeDigital.")
 		}
 	}}
+
+	// . 号需要用到全局变量，所以暂时不作为操作符用在此处
+	//m["."] = &bingo_tpl.Operator{Name:".",Precedence:100,Associativity:bingo_tpl.AssociativityLeft,Type:bingo_tpl.OperatorBinaryType,Target: func(tokens []bingo_tpl.Token) *bingo_tpl.Token {
+	//	if len(tokens)!= 2{
+	//		panic("the . operator is a binary operator")
+	//	}
+	//
+	//
+	//}}
 
 	return m
 }
